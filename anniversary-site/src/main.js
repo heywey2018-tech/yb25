@@ -288,6 +288,7 @@ rsvpForm.addEventListener('submit', async (event) => {
         data.set('guests', payload.guests);
         data.set('joining', payload.attendance);
         data.set('message', payload.message);
+        data.set('notes', payload.message);
         data.set('celebration', payload.celebration);
         data.delete('website');
         // Apps Script receives standard form fields. Its no-cors response is

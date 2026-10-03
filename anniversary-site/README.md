@@ -45,7 +45,7 @@ The celebration is shown as **14 November**, **6:30 PM**. No year or day of the 
 
 ## Connect RSVP replies
 
-A static ZIP cannot store and share guest responses by itself. The supplied Google Apps Script URL is already configured in `site-config.json`. The form sends a `POST` using `FormData` and `mode: 'no-cors'`, with `name`, `guests`, `joining` (`yes` / `no`), `message` and `celebration`. Your Apps Script `doPost(e)` can read these as `e.parameter.name`, `e.parameter.joining`, and so on. Declines send `guests` as `0`.
+A static ZIP cannot store and share guest responses by itself. The supplied Google Apps Script URL is already configured in `site-config.json`. The form sends a `POST` using `FormData` and `mode: 'no-cors'`, with `name`, `guests`, `joining` (`yes` / `no`), `message`, `notes` and `celebration`. The optional note is sent under both `notes` and `message` for compatibility with the receiving script. Your Apps Script `doPost(e)` can read these as `e.parameter.name`, `e.parameter.joining`, `e.parameter.notes` (or `e.parameter.message`), and so on. Declines send `guests` as `0`.
 
 The button shows “Sending…” and prevents duplicate submissions while sending. Completed requests reset the form; network errors preserve the guest's answers for retry. A `no-cors` response is opaque: the browser cannot check whether the script saved a row or returned an HTTP error. The guest message therefore says the reply was sent, without claiming confirmed storage. Verify the deployed script's access settings and sheet-writing behavior with a real RSVP before sharing the invitation.
 
