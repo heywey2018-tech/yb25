@@ -1,0 +1,119 @@
+{
+  "venue": {
+    "name": "Hotel Comfort Inn",
+    "address": "",
+    "city": "Dehradun, Uttarakhand",
+    "mapQuery": "Hotel Comfort Inn Dehradun Uttarakhand"
+  },
+  "rsvp": {
+    "endpoint": "https://script.google.com/macros/s/AKfycbyvp9kBiuR0SVDevkPfmxduDy8cPcmtQJEpQr9OtCIo5JNEf1Dt9eMhqjtWEOEiw6s0/exec",
+    "email": ""
+  },
+  "photos": {
+    "hero": {
+      "src": "./photos/2.jpeg",
+      "alt": "Yogesh and Bhavna beneath evening lights",
+      "position": "50% 50%",
+      "fit": "cover"
+    },
+    "story-then": {
+      "src": "./photos/4.jpeg",
+      "alt": "Yogesh and Bhavna on their wedding day",
+      "position": "50% 50%",
+      "fit": "contain"
+    },
+    "story-now": {
+      "src": "./photos/7.jpeg",
+      "alt": "Yogesh and Bhavna beside a decorated Christmas tree",
+      "position": "50% 50%",
+      "fit": "cover"
+    },
+    "memory-1": {
+      "src": "./photos/8.jpeg",
+      "alt": "Yogesh and Bhavna with family",
+      "position": "50% 50%",
+      "fit": "contain"
+    },
+    "memory-2": {
+      "src": "./photos/9.jpeg",
+      "alt": "A family moment together",
+      "position": "50% 50%",
+      "fit": "contain"
+    },
+    "memory-3": {
+      "src": "./photos/10.jpeg",
+      "alt": "Yogesh and Bhavna with family",
+      "position": "50% 50%",
+      "fit": "contain"
+    },
+    "memory-4": {
+      "src": "./photos/12.jpeg",
+      "alt": "Yogesh and Bhavna by a waterfall",
+      "position": "50% 50%",
+      "fit": "contain"
+    },
+    "memory-5": {
+      "src": "./photos/3.jpeg",
+      "alt": "Bhavna in her bridal outfit",
+      "position": "50% 50%",
+      "fit": "contain"
+    },
+    "memory-6": {
+      "src": "./photos/5.jpeg",
+      "alt": "Yogesh and Bhavna sharing a moment on their wedding day",
+      "position": "50% 50%",
+      "fit": "contain"
+    },
+    "memory-7": {
+      "src": "./photos/1.jpeg",
+      "alt": "Yogesh in his wedding attire",
+      "position": "50% 50%",
+      "fit": "contain"
+    },
+    "jaimala": {
+      "src": "./photos/6.jpeg",
+      "alt": "Yogesh and Bhavna at their wedding ceremony",
+      "position": "50% 50%",
+      "fit": "contain"
+    },
+    "cake": {
+      "src": "./photos/13.jpeg",
+      "alt": "A tiered celebration cake decorated with white flowers",
+      "position": "50% 50%",
+      "fit": "contain"
+    },
+    "dance": {
+      "src": "./photos/15.jpeg",
+      "alt": "Guests dancing and celebrating together",
+      "position": "50% 50%",
+      "fit": "contain"
+    },
+    "dance-detail": {
+      "src": "",
+      "alt": "A joyful moment on the dance floor",
+      "position": "50% 50%"
+    },
+    "dinner": {
+      "src": "./photos/14.jpeg",
+      "alt": "A candlelit dinner beneath strings of lights",
+      "position": "50% 50%",
+      "fit": "contain"
+    },
+    "evening-detail": {
+      "src": "./photos/11.jpeg",
+      "alt": "Yogesh and Bhavna beneath evening lights",
+      "position": "50% 50%",
+      "fit": "contain"
+    },
+    "venue": {
+      "src": "",
+      "alt": "Hotel Comfort Inn, Dehradun",
+      "position": "50% 50%"
+    },
+    "dehradun": {
+      "src": "",
+      "alt": "The hills of Dehradun",
+      "position": "50% 50%"
+    }
+  }
+}
