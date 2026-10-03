@@ -1,0 +1,15 @@
+{
+  "name": "yogesh-bhavna-silver-jubilee",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "package": "npm run build && node scripts/package.mjs"
+  },
+  "devDependencies": {
+    "vite": "^8.0.0"
+  }
+}

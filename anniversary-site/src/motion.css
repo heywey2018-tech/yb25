@@ -1,0 +1,93 @@
+/* One candlelit opening, followed by quiet responses to the guest's actions. */
+.hero-copy,.hero-portrait{animation:none}
+.hero-inner{position:relative;z-index:2}
+.hero-scroll{z-index:2}
+.portrait-outline{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3;overflow:visible}
+.portrait-outline path{stroke:#e6c4a6;stroke-width:1;vector-effect:non-scaling-stroke;opacity:.58}
+.hero.is-opening .hero-landscape{animation:evening-light 1100ms ease-out both}
+.hero.is-opening .portrait-frame{animation:portrait-unveil 1000ms 140ms cubic-bezier(.16,1,.3,1) both}
+.hero.is-opening .portrait-outline path{stroke-dasharray:1;animation:arch-draw 1500ms 350ms cubic-bezier(.16,1,.3,1) both}
+.hero.is-opening .hero-introduction{animation:invitation-arrive 650ms 260ms cubic-bezier(.16,1,.3,1) both}
+.hero.is-opening #hero-title{animation:names-unveil 950ms 400ms cubic-bezier(.16,1,.3,1) both}
+.hero.is-opening .hero-subtitle{animation:invitation-arrive 700ms 620ms cubic-bezier(.16,1,.3,1) both}
+.hero.is-opening .hero-quote{animation:invitation-arrive 700ms 740ms cubic-bezier(.16,1,.3,1) both}
+.hero.is-opening .hero-date,.hero.is-opening .hero-copy>.button{animation:invitation-arrive 700ms 860ms cubic-bezier(.16,1,.3,1) both}
+@keyframes evening-light{from{opacity:.65}to{opacity:1}}
+@keyframes portrait-unveil{from{opacity:.4;clip-path:inset(0 0 16% 0)}to{opacity:1;clip-path:inset(0)}}
+@keyframes arch-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes invitation-arrive{from{opacity:.3;transform:translateY(9px)}to{opacity:1;transform:none}}
+@keyframes names-unveil{from{opacity:.45;clip-path:inset(0 85% 0 0)}to{opacity:1;clip-path:inset(0)}}
+
+/* The sky stays behind the invitation, with just four tiny points of light. */
+.hero-celestial{position:absolute;inset:0;z-index:1;pointer-events:none}
+.hero-moon{position:absolute;top:42px;right:12%;width:28px;height:28px;color:#f4d6b9}
+.hero-moon>.icon{display:none;width:28px;height:28px;stroke-width:.75;fill:#f4d6b926;opacity:.62}
+.moonlight-glow{position:absolute;width:144px;height:144px;left:-58px;top:-58px;background:radial-gradient(circle,#f9dcb823,transparent 67%);animation:moonlight-breathe 9s ease-in-out infinite}
+.sky-star{position:absolute;color:#f7debd;animation:star-glimmer 6s ease-in-out infinite}
+.sky-star .icon{width:8px;height:8px;stroke-width:1;fill:#f7debd29}
+.sky-star-1{left:8%;top:30px;animation-delay:-1.2s}
+.sky-star-2{left:47%;top:69px;animation-delay:-3.6s}
+.sky-star-3{right:15%;top:25px;animation-delay:-.5s}
+.sky-star-4{right:3.3%;top:165px;animation-delay:-4.8s}
+@keyframes moonlight-breathe{0%,100%{opacity:.35}50%{opacity:.8}}
+@keyframes star-glimmer{0%,100%{opacity:.15}50%{opacity:.58}}
+.hero:not(.is-in-view) .sky-star,.hero:not(.is-in-view) .moonlight-glow,.hero.is-document-hidden .sky-star,.hero.is-document-hidden .moonlight-glow{animation-play-state:paused}
+
+/* Staggered petals keep drifting through the two mountain-evening scenes. */
+.rose-petals{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:5}
+.rose-petal{position:absolute;left:var(--petal-left);top:-32px;width:var(--petal-size);height:100%;opacity:0;animation:petal-descent var(--petal-duration) var(--petal-delay) linear infinite both}
+.rose-petal-blade{display:block;width:var(--petal-size);height:calc(var(--petal-size) * 1.55);border-radius:75% 25% 65% 35%;background:linear-gradient(140deg,#edb0b1 5%,#c75a77 55%,#96243f);transform-origin:50% 70%;animation:petal-turn var(--petal-duration) var(--petal-delay) ease-in-out infinite both}
+.rose-petal:nth-child(3n) .rose-petal-blade{background:linear-gradient(140deg,#efc2ba,#d38b97 55%,#a44863)}
+.petal-scene:not(.is-in-view) .rose-petal,.petal-scene:not(.is-in-view) .rose-petal-blade,.petal-scene.is-document-hidden .rose-petal,.petal-scene.is-document-hidden .rose-petal-blade{animation-play-state:paused}
+@keyframes petal-descent{
+  0%{opacity:0;transform:translate3d(0,-24px,0)}
+  10%{opacity:.44}
+  35%{transform:translate3d(calc(var(--petal-drift) * .4),35%,0)}
+  70%{transform:translate3d(calc(var(--petal-drift) * -.2),70%,0)}
+  88%{opacity:.36}
+  100%{opacity:0;transform:translate3d(var(--petal-drift),calc(100% + 50px),0)}
+}
+@keyframes petal-turn{
+  0%{transform:rotate(var(--petal-angle)) rotateY(15deg)}
+  35%{transform:rotate(calc(var(--petal-angle) + 65deg)) rotateY(70deg)}
+  70%{transform:rotate(calc(var(--petal-angle) + 130deg)) rotateY(-25deg)}
+  100%{transform:rotate(calc(var(--petal-angle) + 190deg)) rotateY(45deg)}
+}
+
+.polaroid{transform-origin:50% 55%;animation:polaroid-wiggle var(--wiggle-duration,5.8s) var(--wiggle-delay,0s) ease-in-out infinite;animation-play-state:paused}
+.polaroid.is-in-view{animation-play-state:running}
+.polaroid.is-document-hidden{animation-play-state:paused}
+@keyframes polaroid-wiggle{0%,100%{rotate:-.65deg}50%{rotate:.65deg}}
+
+/* The antique-gold thread follows the evening as it is read. */
+.event-timeline.is-tracing:before{opacity:.23}
+.timeline-progress{position:absolute;left:50%;top:60px;bottom:175px;width:1px;background:linear-gradient(var(--gold),#bb7186,var(--gold));transform:scaleY(var(--timeline-progress,0));transform-origin:top;transition:transform 120ms linear;z-index:-1;pointer-events:none}
+.timeline-node{transition:background 400ms ease-out,color 400ms ease-out,border-color 400ms ease-out}
+.event.is-reached .timeline-node{background:#f3d9d0;color:var(--red);border-color:#ae7854}
+.event-dance.is-reached .timeline-node{background:#efc8cc}
+.attendance-options label>span{transition:background 320ms ease-out,color 250ms ease-out,border-color 250ms ease-out}
+.attendance-options .icon{transform-origin:center}
+
+@media(max-width:700px){
+  .hero-moon{top:23px;right:36px;width:22px;height:22px}
+  .hero-moon>.icon{display:block;width:22px;height:22px}
+  .sky-star-1{left:14%;top:34px}
+  .sky-star-2{left:49%;top:23px}
+  .sky-star-3{right:18%;top:67px}
+  .sky-star-4{right:5%;top:39%}
+  .rose-petal:nth-child(n+9){display:none}
+  .rose-petal,.rose-petal-blade{animation-duration:calc(var(--petal-duration) * 1.3);animation-delay:calc(var(--petal-mobile-delay) * 1.3)}
+  .timeline-progress{left:35px;top:26px;bottom:200px}
+}
+@media(prefers-reduced-motion:reduce){
+  .rose-petals{display:none!important}
+  .sky-star{opacity:.3}
+  .moonlight-glow{opacity:.45}
+  .timeline-progress{display:none}
+  .event-timeline.is-tracing:before{opacity:1}
+}
+@media print{
+  .rose-petals,.hero-celestial,.timeline-progress{display:none!important}
+  .polaroid{animation:none!important;rotate:none}
+  .event-timeline.is-tracing:before{opacity:1}
+}

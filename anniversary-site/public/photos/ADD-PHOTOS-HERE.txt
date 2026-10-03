@@ -1,0 +1,4 @@
+Add your JPG, PNG, WebP or AVIF photographs to this folder.
+Then edit site-config.json. For example:
+"hero": { "src": "photos/hero.jpg", "alt": "Yogesh and Bhavna", "position": "50% 40%" }
+No rebuild is needed when editing the packaged website's photos and site-config.json.

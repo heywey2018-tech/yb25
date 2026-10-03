@@ -1,0 +1,9 @@
+# A candlelit evening in the hills
+
+The user has pinned a romantic contemporary Indian editorial invitation: deep wine, rich red, blush and rose recur across substantial sections, with ivory, forest green and restrained antique gold. Large Cormorant Garamond serif typography paired with Manrope. Self-host fonts and imagery for portable delivery.
+
+An asymmetrical burgundy hero places intimate typography beside a softly arched portrait frame, with atmospheric illustrated mountain ridges beneath. Botanical roses overlap the composition. Fine jaali geometry, small consistent stroked icons and ornamental rules provide detail without heavy wedding graphics.
+
+An ivory story section pairs an emotional statement with two photographs; a blush seven-image horizontal memory carousel follows within the same section. A large cream-and-rose celebration section alternates four event compositions around a slender gold timeline, with five matching tilted rectangular photo frames across the itinerary and evening detail. The venue returns to a dusk landscape and ivory inset map; the RSVP rests on a saturated wine surface and closes in a quiet monogram.
+
+All 15 selected photographs are centered, with complete portraits preserved where needed. Each section uses its own spacing rhythm. Motion combines an initial hero reveal, continuous rose petals in the hero and venue, a flowing memory carousel, small polaroid wiggles, a scroll-following timeline, heading fades and RSVP feedback. Loops pause offscreen or when the tab is hidden, and reduced motion is respected. All controls are keyboard accessible with warm gold focus states. Mobile stacks the invitation while preserving the alternating editorial rhythm.
