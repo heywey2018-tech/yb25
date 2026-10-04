@@ -32,61 +32,61 @@
       "src": "./photos/8.jpeg",
       "alt": "Yogesh and Bhavna with family",
       "position": "50% 50%",
-      "fit": "contain"
+      "fit": "cover"
     },
     "memory-2": {
       "src": "./photos/9.jpeg",
       "alt": "A family moment together",
       "position": "50% 50%",
-      "fit": "contain"
+      "fit": "cover"
     },
     "memory-3": {
       "src": "./photos/10.jpeg",
       "alt": "Yogesh and Bhavna with family",
       "position": "50% 50%",
-      "fit": "contain"
+      "fit": "cover"
     },
     "memory-4": {
       "src": "./photos/12.jpeg",
       "alt": "Yogesh and Bhavna by a waterfall",
       "position": "50% 50%",
-      "fit": "contain"
+      "fit": "cover"
     },
     "memory-5": {
       "src": "./photos/3.jpeg",
       "alt": "Bhavna in her bridal outfit",
       "position": "50% 50%",
-      "fit": "contain"
+      "fit": "cover"
     },
     "memory-6": {
       "src": "./photos/5.jpeg",
       "alt": "Yogesh and Bhavna sharing a moment on their wedding day",
       "position": "50% 50%",
-      "fit": "contain"
+      "fit": "cover"
     },
     "memory-7": {
       "src": "./photos/1.jpeg",
       "alt": "Yogesh in his wedding attire",
       "position": "50% 50%",
-      "fit": "contain"
+      "fit": "cover"
     },
     "jaimala": {
       "src": "./photos/6.jpeg",
       "alt": "Yogesh and Bhavna at their wedding ceremony",
       "position": "50% 50%",
-      "fit": "contain"
+      "fit": "cover"
     },
     "cake": {
       "src": "./photos/13.jpeg",
       "alt": "A tiered celebration cake decorated with white flowers",
       "position": "50% 50%",
-      "fit": "contain"
+      "fit": "cover"
     },
     "dance": {
       "src": "./photos/15.jpeg",
       "alt": "Guests dancing and celebrating together",
       "position": "50% 50%",
-      "fit": "contain"
+      "fit": "cover"
     },
     "dance-detail": {
       "src": "",
@@ -97,13 +97,13 @@
       "src": "./photos/14.jpeg",
       "alt": "A candlelit dinner beneath strings of lights",
       "position": "50% 50%",
-      "fit": "contain"
+      "fit": "cover"
     },
     "evening-detail": {
       "src": "./photos/11.jpeg",
       "alt": "Yogesh and Bhavna beneath evening lights",
       "position": "50% 50%",
-      "fit": "contain"
+      "fit": "cover"
     },
     "venue": {
       "src": "",

@@ -400,7 +400,7 @@
 .memory-track{overflow:hidden;position:relative;width:100%;padding:0;scrollbar-width:none}
 .memory-track::-webkit-scrollbar{display:none}
 .memory-track:focus-visible{outline-offset:-4px}
-.memory-belt{display:flex;width:max-content;animation:memory-flow 100s linear infinite;will-change:transform}
+.memory-belt{display:flex;width:max-content;animation:memory-flow 50s linear infinite;will-change:transform}
 .memory-sequence{display:flex;flex:none;gap:28px;padding-right:28px;width:max-content}
 .memory-slide{flex:0 0 min(760px,74vw);width:min(760px,74vw);min-width:0}
 .memory-slide .photo-slot{aspect-ratio:16/10;border-radius:3px;background:linear-gradient(140deg,#e9bfc0,#d79ba7)}
@@ -409,11 +409,14 @@
 .memory-slide .photo-slot:before{inset:17px}
 .memory-slide .photo-fallback>.icon{margin-bottom:10px}
 .memory-slide .photo-title{font-size:43px;max-width:360px}
-.memory-carousel.is-paused .memory-belt,.memory-carousel.is-offscreen .memory-belt,.memory-carousel.is-document-hidden .memory-belt,.memory-carousel:focus-within .memory-belt{animation-play-state:paused}
+.memory-carousel.is-paused .memory-belt,.memory-carousel.is-offscreen .memory-belt,.memory-carousel.is-document-hidden .memory-belt{animation-play-state:paused}
+.memory-track:focus-visible .memory-belt{animation-play-state:paused}
+@media(hover:hover) and (pointer:fine){.memory-carousel:focus-within .memory-belt{animation-play-state:paused}}
 @keyframes memory-flow{to{transform:translateX(-50%)}}
 
 /* One softly tilted rectangular frame treatment across the evening. */
 .event .event-visual,.evening-detail{width:100%;max-width:440px;padding:12px 12px 0;background:var(--ivory);box-shadow:0 12px 30px #661d3512;transform:rotate(-3deg)}
+.evening-detail{padding-bottom:24px}
 .event-reverse .event-visual{transform:rotate(3deg)}
 .event .event-photo,.evening-detail .photo-slot{width:100%;height:auto;min-height:0;aspect-ratio:4/3;border-radius:2px;background:linear-gradient(140deg,#efd2ce,#e4b5b7);color:var(--wine)}
 .event .event-photo:before,.evening-detail .photo-slot:before{border-radius:0;border-color:#78263b22}
@@ -428,6 +431,7 @@
   .memory-heading .memory-heading-tools{justify-content:space-between;gap:18px;width:100%}
   .memory-heading-tools .memory-subtitle{display:flex;align-items:center;gap:12px;text-align:left}
   .memory-sequence{gap:16px;padding-right:16px}
+  .memory-belt{animation-duration:35s}
   .memory-slide{flex-basis:84vw;width:84vw}
   .memory-slide .photo-slot{aspect-ratio:4/4.4}
   .memory-slide .photo-title{font-size:35px;max-width:235px}
@@ -436,6 +440,12 @@
   .event-dance{min-height:0;margin-top:75px;margin-bottom:75px}
   .evening-detail{width:calc(100% - 42px);max-width:440px}
   .venue-address-name{font-size:29px}
+}
+/* Preserve the photo frames on iPhones without CSS aspect-ratio support. */
+@supports not (aspect-ratio:4/3){
+  .memory-slide .photo-slot{height:0;min-height:0;padding-top:62.5%}
+  .event .event-photo,.evening-detail .photo-slot{height:0;padding-top:75%}
+  @media(max-width:700px){.memory-slide .photo-slot{padding-top:110%}}
 }
 @media(prefers-reduced-motion:reduce){
   .carousel-motion-toggle{display:none}

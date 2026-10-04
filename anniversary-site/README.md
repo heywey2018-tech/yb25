@@ -79,6 +79,6 @@ Main files: `src/main.js` (content and interactions), `src/style.css` (visual de
 
 ## Typography and accessibility
 
-Cormorant Garamond and Manrope are bundled with their SIL Open Font License files in `fonts/`. The memory carousel flows continuously and has a keyboard-accessible pause control. Reduced-motion mode provides a scrollable gallery. Forms have labelled fields and focus states, and the page includes mobile navigation and a skip link.
+Cormorant Garamond and Manrope are bundled with their SIL Open Font License files in `fonts/`. The memory carousel flows continuously, completing a loop in 50 seconds on desktop and 35 seconds on narrow mobile screens, and has a keyboard-accessible pause control. Touching a photograph keeps the slideshow moving; keyboard focus pauses it. Reduced-motion mode provides a scrollable gallery. Forms have labelled fields and focus states, and the page includes mobile navigation and a skip link. Older Safari versions use compatibility fallbacks for motion preferences, photo-frame proportions and RSVP request timeouts.
 
 The hero and venue feature subtle continuous rose petals. Photo frames gently wiggle, the evening timeline unfolds on scroll, and the celebration and venue headings fade in. Decorative loops pause offscreen or when the browser tab is hidden, and reduced-motion preferences are respected. Motion is implemented in `src/motion.js` and `src/motion.css`.

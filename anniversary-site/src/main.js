@@ -99,7 +99,7 @@ document.querySelector('#remaining-sections').outerHTML = `
   <section id="journey" class="journey" aria-labelledby="journey-title">
     <div class="journey-intro container">
       <div class="story-copy">
-        <h2 id="journey-title">Our Journey</h2>
+        <h2 id="journey-title">Here's to Us! 🥂</h2>
         <div class="short-rule" aria-hidden="true"></div>
         <p class="story-text">Twenty-five years of choosing each other, growing together, and creating a life filled with love, laughter, and countless little moments. Here’s to Yogesh & Bhavna — and to all the beautiful years still to come.</p>
         <p class="story-signature">Then, now <em>&</em> always.</p>
@@ -130,7 +130,7 @@ document.querySelector('#remaining-sections').outerHTML = `
     <div class="event-timeline container">
       ${events.map((event, i) => `<article class="event ${event.className} ${i % 2 ? 'event-reverse' : ''}" aria-labelledby="event-title-${i}"><div class="timeline-node" aria-hidden="true">${icon(event.icon)}</div><div class="event-copy"><time>${event.time}</time><h3 id="event-title-${i}">${event.title}</h3><p class="event-category">Event: ${event.category}</p><p class="event-description">${event.description}</p><div class="event-flourish" aria-hidden="true"><span></span>${icon(event.icon)}</div></div><div class="event-visual">${photo(event.photo, event.label, 'event-photo')}${i === 3 ? `<div class="dinner-star" aria-hidden="true">${icon('star')}</div>` : ''}<span class="event-photo-caption">${event.label}</span></div></article>`).join('')}
     </div>
-    <div class="evening-moments container"><div class="moment-quote">${icon('star')}<p>Some evenings<br>stay with you<br><em>forever.</em></p></div><figure class="evening-detail">${photo('evening-detail', 'The glow of a beautiful evening')}<figcaption>Love in the little details</figcaption></figure><img src="./art/botanical.png" alt="" loading="lazy" aria-hidden="true" /></div>
+    <div class="evening-moments container"><div class="moment-quote">${icon('star')}<p>Some evenings <br>stay with you<br><em>forever.</em></p></div><figure class="evening-detail">${photo('evening-detail', 'The glow of a beautiful evening')}</figure><img src="./art/botanical.png" alt="" loading="lazy" aria-hidden="true" /></div>
     <div class="celebration-bottom" aria-hidden="true">${ornament()}</div>
   </section>
   <section id="venue" class="venue" aria-labelledby="venue-title">
@@ -148,7 +148,7 @@ document.querySelector('#remaining-sections').outerHTML = `
       <form id="rsvp-form" class="rsvp-form">
         <div class="form-row"><div class="form-field"><label for="guest-name">Your name <span aria-hidden="true">*</span></label><input id="guest-name" name="name" type="text" autocomplete="name" required maxlength="120" placeholder="Your full name" /></div><div class="form-field guest-count"><label for="guest-count">Number of guests <span aria-hidden="true">*</span></label><select id="guest-count" name="guests" required>${Array.from({length:10}, (_,i) => `<option value="${i+1}">${i+1}${i === 0 ? ' guest' : ' guests'}</option>`).join('')}<option value="11+">11 or more</option></select></div></div>
         <fieldset class="attendance-field"><legend>Will you be joining us? <span aria-hidden="true">*</span></legend><div class="attendance-options"><label><input type="radio" name="joining" value="yes" required /><span>${icon('heart')}Joyfully, yes</span></label><label><input type="radio" name="joining" value="no" required /><span>${icon('sad')}With regret, no</span></label></div></fieldset>
-        <div class="form-field"><label for="guest-message">A little note for us <span class="optional">(optional)</span></label><textarea id="guest-message" name="message" rows="4" maxlength="2000" placeholder="A message, or any dietary requirements…"></textarea></div>
+        <div class="form-field"><label for="guest-message">A little note for us <span class="optional">(optional)</span></label><textarea id="guest-message" name="message" rows="4" maxlength="2000" placeholder="Write a message…"></textarea></div>
         <div class="form-honeypot" aria-hidden="true"><label for="website">Leave this blank</label><input id="website" name="website" tabindex="-1" autocomplete="off" /></div>
         <button id="rsvp-btn" class="button button-blush rsvp-submit" type="submit">Send RSVP</button><p class="form-note" id="rsvp-note">With love, we look forward to celebrating together.</p><p id="rsvp-status" class="form-status" role="status" aria-live="polite"></p>
       </form>
@@ -237,7 +237,8 @@ motionToggle.addEventListener('click', () => {
   slideshowPaused = !slideshowPaused;
   updateSlideshowControl();
 });
-reducedMotion.addEventListener('change', updateSlideshowControl);
+if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', updateSlideshowControl);
+else reducedMotion.addListener(updateSlideshowControl);
 updateSlideshowControl();
 const carouselObserver = new IntersectionObserver(([entry]) => {
   carousel.classList.toggle('is-offscreen', !entry.isIntersecting);
@@ -250,6 +251,16 @@ document.addEventListener('visibilitychange', () => {
 const attendance = rsvpForm.elements.joining;
 const guestCount = rsvpForm.elements.guests;
 let rsvpSubmitting = false;
+// AbortSignal.timeout is unavailable in older iPhone Safari versions.
+async function fetchWithTimeout(url, options, timeoutMs) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, { ...options, signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
 for (const option of attendance) option.addEventListener('change', () => {
   guestCount.disabled = attendance.value === 'no';
   guestCount.required = attendance.value !== 'no';
@@ -293,10 +304,10 @@ rsvpForm.addEventListener('submit', async (event) => {
         data.delete('website');
         // Apps Script receives standard form fields. Its no-cors response is
         // opaque, so completion confirms dispatch, not that a row was saved.
-        await fetch(endpoint, { method: 'POST', mode: 'no-cors', body: data, signal: AbortSignal.timeout(30000) });
+        await fetchWithTimeout(endpoint, { method: 'POST', mode: 'no-cors', body: data }, 30000);
         formStatus.textContent = payload.attendance === 'yes' ? 'Thank you! Your RSVP has been sent. 💌 We look forward to celebrating with you.' : 'Thank you! Your reply has been sent. You’ll be with us in spirit.';
       } else {
-        const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload), signal: AbortSignal.timeout(15000) });
+        const response = await fetchWithTimeout(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload) }, 15000);
         if (!response.ok) throw new Error('Reply not accepted');
         formStatus.textContent = payload.attendance === 'yes' ? 'Thank you! Your RSVP has been received. We look forward to celebrating with you.' : 'Thank you for letting us know. You’ll be with us in spirit.';
       }
@@ -318,7 +329,7 @@ rsvpForm.addEventListener('submit', async (event) => {
     }
   } else if (email) {
     const subject = 'RSVP: Yogesh & Bhavna’s 25th anniversary';
-    const body = `Name: ${payload.name}\nJoining: ${payload.attendance === 'yes' ? 'Yes' : 'No'}\nGuests: ${payload.guests}\n\nMessage / dietary requirements:\n${payload.message || 'None'}\n\n14 November · Hotel Comfort Inn, Dehradun`;
+    const body = `Name: ${payload.name}\nJoining: ${payload.attendance === 'yes' ? 'Yes' : 'No'}\nGuests: ${payload.guests}\n\nMessage:\n${payload.message || 'None'}\n\n14 November · Hotel Comfort Inn, Dehradun`;
     window.location.href = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     formStatus.textContent = 'Your email draft is ready. Send it from your email app to confirm your RSVP.';
   } else {

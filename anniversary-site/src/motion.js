@@ -149,7 +149,8 @@ export function initInvitationMotion() {
       scheduledFrame = 0;
     } else scheduleTimeline();
   }
-  reducedMotion.addEventListener('change', updateMotionPreference);
+  if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', updateMotionPreference);
+  else reducedMotion.addListener(updateMotionPreference);
   timeline.classList.toggle('is-tracing', !reducedMotion.matches);
 
   const loopingSurfaces = [...petalScenes, ...polaroids];
