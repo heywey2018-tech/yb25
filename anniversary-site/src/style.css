@@ -455,7 +455,10 @@
 }
 
 #site-music{display:none}
-.music-toggle{position:absolute;right:var(--gutter);bottom:24px;z-index:8;width:42px;height:42px;padding:0;display:grid;place-items:center;border:1px solid #f3d7d69c;border-radius:50%;background:var(--deep-wine);color:var(--cream);transition:background .2s,color .2s,border-color .2s}
+.music-toggle{position:absolute;right:var(--gutter);bottom:24px;z-index:8;min-width:42px;height:42px;padding:0 12px;display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid #f3d7d69c;border-radius:999px;background:var(--deep-wine);color:var(--cream);transition:background .2s,color .2s,border-color .2s,width .2s,padding .2s}
 .music-toggle .icon{width:17px;height:17px}
+.music-toggle-label{font-size:11px;line-height:1;letter-spacing:.025em;white-space:nowrap}
+.music-toggle.is-playing{width:42px;padding:0}
+.music-toggle.is-playing .music-toggle-label{display:none}
 .music-toggle:hover{background:var(--blush);border-color:var(--blush);color:var(--deep-wine)}
-@media(max-width:700px){.music-toggle{right:20px;bottom:68px;width:40px;height:40px}}
+@media(max-width:700px){.music-toggle{right:20px;bottom:68px;height:40px;min-width:40px}.music-toggle.is-playing{width:40px;min-width:40px}}

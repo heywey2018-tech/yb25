@@ -57,7 +57,7 @@ document.querySelector('#app').innerHTML = `
         </div>
       </div>
       <a class="hero-scroll" href="#journey"><span>Join us for an evening of love & celebration</span>${icon('down')}</a>
-      <button id="music-toggle" class="music-toggle" type="button" aria-label="Pause background music" title="Pause background music">${icon('pause')}</button>
+      <button id="music-toggle" class="music-toggle" type="button" aria-label="Play background music" title="Play background music">${icon('play')}<span class="music-toggle-label">Tap for music</span></button>
       <audio id="site-music" src="./music/anniversary-loop.mp3" autoplay loop preload="auto"></audio>
     </section>
     <div id="remaining-sections"></div>
@@ -65,7 +65,7 @@ document.querySelector('#app').innerHTML = `
 
 const backgroundMusic = document.querySelector('#site-music');
 const musicToggle = document.querySelector('#music-toggle');
-const musicUnlockEvents = ['pointerdown', 'keydown'];
+const musicUnlockEvents = ['click', 'keydown'];
 function removeMusicUnlockListeners() {
   musicUnlockEvents.forEach((eventName) => document.removeEventListener(eventName, unlockMusic, true));
 }
@@ -74,7 +74,8 @@ function updateMusicControl() {
   const label = playing ? 'Pause background music' : 'Play background music';
   musicToggle.setAttribute('aria-label', label);
   musicToggle.title = label;
-  musicToggle.innerHTML = icon(playing ? 'pause' : 'play');
+  musicToggle.innerHTML = `${icon(playing ? 'pause' : 'play')}<span class="music-toggle-label">Tap for music</span>`;
+  musicToggle.classList.toggle('is-playing', playing);
 }
 async function tryPlayMusic() {
   try {
@@ -86,6 +87,7 @@ async function tryPlayMusic() {
   }
 }
 function unlockMusic(event) {
+  if (event.type === 'keydown' && !['Enter', ' '].includes(event.key)) return;
   if (event.target instanceof Element && event.target.closest('#music-toggle')) return;
   void tryPlayMusic().then((started) => { if (started) removeMusicUnlockListeners(); });
 }
