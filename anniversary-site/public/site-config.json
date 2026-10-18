@@ -11,20 +11,20 @@
   },
   "photos": {
     "hero": {
-      "src": "./photos/2.jpeg",
-      "alt": "Yogesh and Bhavna beneath evening lights",
+      "src": "./photos/1a.jpeg",
+      "alt": "Yogesh and Bhavna together in a garden",
       "position": "50% 50%",
       "fit": "cover"
     },
     "story-then": {
-      "src": "./photos/4.jpeg",
-      "alt": "Yogesh and Bhavna on their wedding day",
-      "position": "50% 50%",
-      "fit": "contain"
-    },
-    "story-now": {
       "src": "./photos/7.jpeg",
       "alt": "Yogesh and Bhavna beside a decorated Christmas tree",
+      "position": "50% 50%",
+      "fit": "cover"
+    },
+    "story-now": {
+      "src": "./photos/4a.jpeg",
+      "alt": "Yogesh and Bhavna together in a garden",
       "position": "50% 50%",
       "fit": "cover"
     },
@@ -37,12 +37,12 @@
     "memory-2": {
       "src": "./photos/9.jpeg",
       "alt": "A family moment together",
-      "position": "50% 50%",
+      "position": "50% 35%",
       "fit": "cover"
     },
     "memory-3": {
-      "src": "./photos/10.jpeg",
-      "alt": "Yogesh and Bhavna with family",
+      "src": "./photos/2a.jpeg",
+      "alt": "Three family members together at an evening celebration",
       "position": "50% 50%",
       "fit": "cover"
     },
@@ -55,7 +55,7 @@
     "memory-5": {
       "src": "./photos/3.jpeg",
       "alt": "Bhavna in her bridal outfit",
-      "position": "50% 50%",
+      "position": "50% 0%",
       "fit": "cover"
     },
     "memory-6": {
@@ -67,18 +67,18 @@
     "memory-7": {
       "src": "./photos/1.jpeg",
       "alt": "Yogesh in his wedding attire",
-      "position": "50% 50%",
+      "position": "50% 0%",
       "fit": "cover"
     },
     "jaimala": {
       "src": "./photos/6.jpeg",
       "alt": "Yogesh and Bhavna at their wedding ceremony",
-      "position": "50% 50%",
+      "position": "50% 0%",
       "fit": "cover"
     },
     "cake": {
-      "src": "./photos/13.jpeg",
-      "alt": "A tiered celebration cake decorated with white flowers",
+      "src": "./photos/silver-jubilee-cake.jpg",
+      "alt": "A tiered white celebration cake beneath warm candlelight",
       "position": "50% 50%",
       "fit": "cover"
     },
@@ -94,8 +94,8 @@
       "position": "50% 50%"
     },
     "dinner": {
-      "src": "./photos/14.jpeg",
-      "alt": "A candlelit dinner beneath strings of lights",
+      "src": "./photos/dinner-under-stars.jpg",
+      "alt": "An outdoor dinner table beneath glowing string lights",
       "position": "50% 50%",
       "fit": "cover"
     },

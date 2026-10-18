@@ -57,9 +57,47 @@ document.querySelector('#app').innerHTML = `
         </div>
       </div>
       <a class="hero-scroll" href="#journey"><span>Join us for an evening of love & celebration</span>${icon('down')}</a>
+      <button id="music-toggle" class="music-toggle" type="button" aria-label="Pause background music" title="Pause background music">${icon('pause')}</button>
+      <audio id="site-music" src="./music/anniversary-loop.mp3" autoplay loop preload="auto"></audio>
     </section>
     <div id="remaining-sections"></div>
   </main>`;
+
+const backgroundMusic = document.querySelector('#site-music');
+const musicToggle = document.querySelector('#music-toggle');
+const musicUnlockEvents = ['pointerdown', 'keydown'];
+function removeMusicUnlockListeners() {
+  musicUnlockEvents.forEach((eventName) => document.removeEventListener(eventName, unlockMusic, true));
+}
+function updateMusicControl() {
+  const playing = !backgroundMusic.paused && !backgroundMusic.ended;
+  const label = playing ? 'Pause background music' : 'Play background music';
+  musicToggle.setAttribute('aria-label', label);
+  musicToggle.title = label;
+  musicToggle.innerHTML = icon(playing ? 'pause' : 'play');
+}
+async function tryPlayMusic() {
+  try {
+    await backgroundMusic.play();
+    return true;
+  } catch {
+    updateMusicControl();
+    return false;
+  }
+}
+function unlockMusic(event) {
+  if (event.target instanceof Element && event.target.closest('#music-toggle')) return;
+  void tryPlayMusic().then((started) => { if (started) removeMusicUnlockListeners(); });
+}
+musicUnlockEvents.forEach((eventName) => document.addEventListener(eventName, unlockMusic, true));
+backgroundMusic.addEventListener('play', () => { updateMusicControl(); removeMusicUnlockListeners(); });
+backgroundMusic.addEventListener('pause', updateMusicControl);
+musicToggle.addEventListener('click', () => {
+  if (backgroundMusic.paused) void tryPlayMusic();
+  else backgroundMusic.pause();
+});
+updateMusicControl();
+void tryPlayMusic();
 
 const menuToggle = document.querySelector('.menu-toggle');
 const mobileNav = document.querySelector('#mobile-nav');
@@ -99,9 +137,9 @@ document.querySelector('#remaining-sections').outerHTML = `
   <section id="journey" class="journey" aria-labelledby="journey-title">
     <div class="journey-intro container">
       <div class="story-copy">
-        <h2 id="journey-title">Here's to Us! 🥂</h2>
+        <h2 id="journey-title">Our Journey</h2>
         <div class="short-rule" aria-hidden="true"></div>
-        <p class="story-text">Twenty-five years of choosing each other, growing together, and creating a life filled with love, laughter, and countless little moments. Here’s to Yogesh & Bhavna — and to all the beautiful years still to come.</p>
+        <p class="story-text">Twenty-five years of choosing each other, growing together, and creating a life filled with love, laughter, and countless little moments. Here’s to us— and to all the beautiful years still to come.</p>
         <p class="story-signature">Then, now <em>&</em> always.</p>
       </div>
       <div class="story-photos">
